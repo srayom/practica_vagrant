@@ -13,7 +13,8 @@ Vagrant.configure("2") do |config|
 
     config.vm.define "webserver" do |webserver|
         webserver.vm.hostname = "webserver"
-        webserver.vm.network "private_network", ip: "10.0.9.12"    
+        webserver.vm.network "private_network", ip: "10.0.9.12"
+        webserver.vm.provision :shell, path: "webserver/apache2.sh"    
     end
 
     config.vm.provision :shell, path: "init.sh"
